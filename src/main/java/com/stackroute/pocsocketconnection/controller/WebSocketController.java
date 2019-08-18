@@ -1,5 +1,6 @@
 package com.stackroute.pocsocketconnection.controller;
 
+import com.stackroute.pocsocketconnection.domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -14,7 +15,7 @@ public class WebSocketController {
 
     @MessageMapping("/message")
     @SendTo("/topic/message")
-    private String sendMessage(String message) {
-        return "Recieved: " + message;
+    private Message sendMessage(Message message) {
+        return message;
     }
 }

@@ -14,8 +14,8 @@ public class WebSocketController {
     private SimpMessagingTemplate messagingTemplate;
 
     @MessageMapping("/message")
-    @SendTo("/topic/message")
-    private Message sendMessage(Message message) {
-        return message;
+//    @SendTo("/topic/message")
+    private void sendMessage(Message message) {
+        messagingTemplate.convertAndSendToUser(message.getToUser(), "/queue/message", message);
     }
 }
